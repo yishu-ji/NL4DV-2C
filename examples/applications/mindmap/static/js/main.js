@@ -108,6 +108,9 @@
         }
     }
 
+    // new function
+    
+
     main.analyzeQuery = function(query){
         $.post("/analyze_query", {"query": query})
             .done(function (response_string) {

@@ -6,25 +6,25 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6JD618ZWVK"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    gtag('config', 'G-6JD618ZWVK');
+        gtag('config', 'G-6JD618ZWVK');
     </script>
 
     <!-- Hotjar Tracking Code for NL4DV -->
     <script>
-        (function(h,o,t,j,a,r){
-            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-            h._hjSettings={hjid:5201117,hjsv:6};
-            a=o.getElementsByTagName('head')[0];
-            r=o.createElement('script');r.async=1;
-            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 5201117, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
             a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
-    
+
     <meta charset="UTF-8">
     <title>NL4DV | MindMap</title>
 
@@ -41,40 +41,43 @@
 
 <body>
     <!-- Modal -->
-<div class="modal fade" id="queryModal" tabindex="-1" role="dialog" aria-labelledby="queryModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h5>What do you want to know?
-                    <a style="float:right" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </a>
-                </h5>
-                <hr>
-                <div class="form-group text-center" style="position:relative;">
-                    <div class="input-group">
-                        <span class="input-group-btn">
-                            <button id="recordButton" style="border-radius:0;" class="btn btn-primary"><i class="fa fa-microphone"></i></button>
-                        </span>
-                        <input type="text" class="form-control input-md" id="queryBox"
-                            placeholder="Type your query or tap the record button to start speaking..." />
-                        <span class="input-group-btn">
-                            <button type="button" style="border-radius: 0;" id="processQueryBtn" class="btn btn-success"><i class="fa fa-rocket"></i>&nbsp;Ask NL4DV</button>
-                        </span>
-                        
+    <div class="modal fade" id="queryModal" tabindex="-1" role="dialog" aria-labelledby="queryModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h5>What do you want to know?
+                        <a style="float:right" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </h5>
+                    <hr>
+                    <div class="form-group text-center" style="position:relative;">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="recordButton" style="border-radius:0;" class="btn btn-primary"><i
+                                        class="fa fa-microphone"></i></button>
+                            </span>
+                            <input type="text" class="form-control input-md" id="queryBox"
+                                placeholder="Type your query or tap the record button to start speaking..." />
+                            <span class="input-group-btn">
+                                <button type="button" style="border-radius: 0;" id="processQueryBtn"
+                                    class="btn btn-success"><i class="fa fa-rocket"></i>&nbsp;Ask NL4DV</button>
+                            </span>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
     <div class="container-fluid">
-        <br/>
+        <br />
         <div style="text-align: center;">
             <h2>Mindmapping with NL4DV</h2>
             <h4>
-                <span>Ask questions about the</span> 
-    
+                <span>Ask questions about the</span>
+
                 <select id="datasetSelect">
                     <option value="movies-w-year.csv" selected="selected">Movies</option>
                     <option value="olympic_medals.csv">Olympic Medals</option>
@@ -84,14 +87,134 @@
                     <option value="euro.csv">Euro</option>
                     <option value="superstore.csv">Superstore</option>
                     <option value="nba-mvp.csv">NBA MVP</option>
-                </select> 
-            
+                </select>
+
                 <span>dataset.</span>
             </h4>
+
+            <hr>
+            <div class="container">
+                <div class="row align-items-center" style="padding: 10px;">
+                    <!-- NL4DV2VL Section -->
+                    <div class="col-md-4 text-center">
+                        <h2>(NL4DV)2C:</h2>
+                        <h6>Make DATAVIS to CODE more accessible</h6>
+                    </div>
+
+                    <!-- Vega-Lite Spec Section -->
+                    <div class="col-md-4 text-center">
+                        <h4>Vega-Lite Spec for Latest VIS</h4>
+                        
+                        <div style="margin-top: 10px;">
+                            <button id="viewVegaLiteSpecBtn" class="btn btn-secondary" onclick="viewVegaLiteSpec()">🔍
+                                View Code</button>
+                            <button id="copyVegaLiteSpecBtn" class="btn btn-secondary" onclick="copyVegaLiteSpec()">📑
+                                Copy Code</button>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button id="openVegaLiteEditorBtn" class="btn btn-primary"
+                                onclick="window.open('https://vega.github.io/editor/#/', '_blank')">🚀 Open Vega-Lite
+                                Editor</button>
+                        </div>
+                    </div>
+
+                    <!-- ASP for Latest VIS Section -->
+                    <div class="col-md-4 text-center">
+                        <h4>ASP for Latest VIS</h4>
+                        <div style="margin-top: 10px;">
+                            <button id="convertToASPBtn" class="btn btn-secondary" onclick="viewASP()">🔍 View
+                                Code</button>
+                            <button id="copyASPBtn" class="btn btn-secondary" onclick="copyASP()">📑 Copy Code</button>
+                        </div>
+                        <div style="margin-top: 10px;">
+                            <button id="openDracoEditorBtn" class="btn btn-primary"
+                                onclick="window.open('https://idl.uw.edu/draco-editor/#/editor', '_blank')">🚀 Open Draco
+                                Editor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- </div>
+            <div class="row", style="padding: 10px;">
+                <div class="col-md-6">
+                    <h2>"NL4DV2VL"</h2>
+                </div>
+                
+                <div class="col-md-6">
+                    <h4>Vega-Lite Spec for Latest VIS</h4>
+                    
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button id="viewVegaLiteSpecBtn" class="btn btn-secondary" onclick="viewVegaLiteSpec()">🔍 View Code</button>
+                        <button id="copyVegaLiteSpecBtn" class="btn btn-secondary" onclick="copyVegaLiteSpec()">📑 Copy Code</button>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button id="openVegaLiteEditorBtn" class="btn btn-primary" onclick="window.open('https://vega.github.io/editor/#/', '_blank')">Open Vega-Lite Editor</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h4>ASP for Latest VIS</h4>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button id="convertToASPBtn" class="btn btn-secondary" onclick="viewASP()">🔍 View Code</button>
+                        <button id="convertToASPBtn" class="btn btn-secondary" onclick="copyASP()">📑 Copy Code</button>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <button id="openVegaLiteEditorBtn" class="btn btn-primary" onclick="window.open('https://idl.uw.edu/draco-editor/#/editor', '_blank')">Open Draco Editor</button>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- <h4>Vega-Lite Spec for Latest VIS</h4>
+            <div style="text-align: center; margin-top: 10px;">
+                <button id="viewVegaLiteSpecBtn" class="btn btn-secondary" onclick="viewVegaLiteSpec()">🔍 View Code</button>
+                <button id="copyVegaLiteSpecBtn" class="btn btn-secondary" onclick="copyVegaLiteSpec()">📑 Copy Code</button>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <button id="openVegaLiteEditorBtn" class="btn btn-primary" onclick="window.open('https://vega.github.io/editor/#/', '_blank')">Open Vega-Lite Editor</button>
+            </div>
+
+            <h4>ASP for Latest VIS</h4>
+            <div style="text-align: center; margin-top: 10px;">
+                <button id="convertToASPBtn" class="btn btn-secondary" onclick="viewASP()">🔍 View Code</button>
+                <button id="convertToASPBtn" class="btn btn-secondary" onclick="copyASP()">📑 Copy Code</button>
+            </div>
+            <div style="text-align: center; margin-top: 10px;">
+                <button id="openVegaLiteEditorBtn" class="btn btn-primary" onclick="window.open('https://idl.uw.edu/draco-editor/#/editor', '_blank')">Open Draco Editor</button>
+            </div>
+        </div> -->
+
+            <!-- Add Draco button below the dataset selector -->
+            <!-- <div style="text-align: center; margin-top: 20px;">
+                <button id="generateAlternativesBtn" onclick="callDraco()">Generate Alternatives with Draco</button>
+            </div> -->
+
+            <!-- Add view and copy buttons below the dataset selector -->
+            <!-- <div style="text-align: center; margin-top: 20px;">
+                <button id="viewVegaLiteSpecBtn" class="btn btn-secondary" onclick="viewVegaLiteSpec()">View Vega-Lite
+                    Spec</button>
+                <button id="copyVegaLiteSpecBtn" class="btn btn-secondary" onclick="copyVegaLiteSpec()">Copy Vega-Lite
+                    Spec</button>
+            </div> -->
+
+            <!-- <div id="vegaLiteSpecContainer"
+                style="display:none; margin-top: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9;">
+                <h4>Vega-Lite Specification</h4>
+                <pre id="vegaLiteSpec"></pre>
+            </div>
+
+        </div> -->
+            <hr>
+            <svg id='mindmap-svg'></svg>
+
+            <!-- Container for Draco's alternative visualizations -->
+            <hr>
+            <div id="alternatives-container" style="margin-top: 20px;">
+                <h3>Alternative Visualizations</h3>
+                <!-- Alternative visualizations will be rendered here -->
+            </div>
         </div>
-        <hr>
-        <svg id='mindmap-svg'></svg>
-    </div>
 </body>
 
 <!--JS files-->
@@ -105,10 +228,17 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-<script src="{{ url_for('mindmap.static', filename='js/global.js') }}"></script>
+<!-- <script src="{{ url_for('mindmap.static', filename='js/global.js') }}"></script>
 <script src="{{ url_for('mindmap.static', filename='js/utils.js') }}"></script>
 <script src="{{ url_for('mindmap.static', filename='js/MindMap.js') }}"></script>
 <script src="{{ url_for('mindmap.static', filename='js/ui.js') }}"></script>
-<script src="{{ url_for('mindmap.static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('mindmap.static', filename='js/main.js') }}"></script> -->
+
+<script src="static/js/global.js"></script>
+<script src="static/js/utils.js"></script>
+<script src="static/js/ui.js"></script>
+<script src="static/js/MindMap.js"></script>
+<script src="static/js/main.js"></script>
+
 
 </html>
